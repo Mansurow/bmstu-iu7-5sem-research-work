@@ -1,1 +1,0 @@
-# bmstu-iu7-NIR
