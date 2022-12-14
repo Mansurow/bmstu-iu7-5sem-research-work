@@ -3,10 +3,14 @@
 \usepackage[utf8]{inputenc} % Кодировка utf8
 \usepackage[english,russian]{babel} % Языки: английский, русский
 \usepackage{enumitem}
-
 \usepackage{threeparttable}
 
 \usepackage[14pt]{extsizes}
+\usepackage{geometry}
+\geometry{left=30mm}
+\geometry{right=10mm}
+\geometry{top=20mm}
+\geometry{bottom=20mm}
 
 \usepackage{caption}
 \captionsetup[table]{justification=raggedright,singlelinecheck=off}
@@ -20,13 +24,8 @@
 \setenumerate[0]{label=\arabic*)} % Изменение вида нумерации списков
 \renewcommand{\labelitemi}{---}
 
-
-\usepackage{geometry}
-\geometry{left=30mm}
-\geometry{right=10mm}
-\geometry{top=20mm}
-\geometry{bottom=20mm}
-
+% Переопределение стандартных \section, \subsection, \subsubsection по ГОСТу;
+% Переопределение их отступов до и после для 1.5 интервала во всем документе
 \usepackage{titlesec}
 \titleformat{\section}
 {\normalsize\bfseries}
@@ -35,7 +34,6 @@
 \titlespacing*{\chapter}{0pt}{-30pt}{8pt}
 \titlespacing*{\section}{\parindent}{*4}{*4}
 \titlespacing*{\subsection}{\parindent}{*4}{*4}
-
 
 \usepackage{titlesec}
 \titleformat{\chapter}{\LARGE\bfseries}{\thechapter}{16pt}{\LARGE\bfseries}
@@ -50,6 +48,20 @@
 
 \usepackage{listings}
 \usepackage{xcolor}
+
+\usepackage{ulem} % Нормальное нижнее подчеркивание
+\usepackage{hhline} % Двойная горизонтальная линия в таблицах
+\usepackage[figure,table]{totalcount} % Подсчет изображений, таблиц
+\usepackage{rotating} % Поворот изображения вместе с названием
+\usepackage{lastpage} % Для подсчета числа страниц
+% Дополнительное окружения для подписей
+\usepackage{array}
+\newenvironment{signstabular}[1][1]{
+	\renewcommand*{\arraystretch}{#1}
+	\tabular
+}{
+	\endtabular
+}
 
 \makeatletter 
 \def\@biblabel#1{#1. } % Изменение нумерации списка использованных источников
@@ -149,21 +161,6 @@
 \usetikzlibrary{datavisualization.formats.functions}
 
 \usepackage{graphicx}
-\newcommand{\imgScale}[3] {
-	\begin{figure}[h!]
-		\center{\includegraphics[scale=#1]{img/#2}} % height
-		\caption{#3}
-		\label{img:#2}
-	\end{figure}
-}
-
-\newcommand{\imgHeight}[3] {
-	\begin{figure}[h!]
-		\center{\includegraphics[height=#1]{img/#2}} % height
-		\caption{#3}
-		\label{img:#2}
-	\end{figure}
-}
 
 \usepackage[justification=centering]{caption} % Настройка подписей float объектов
 
@@ -171,3 +168,7 @@
 \hypersetup{hidelinks}
 
 \newcommand{\code}[1]{\texttt{#1}}
+
+\usepackage{pifont}
+\newcommand{\cmark}{\textcolor{green}{\ding{51}}}%
+\newcommand{\xmark}{\textcolor{red}{\ding{55}}}%

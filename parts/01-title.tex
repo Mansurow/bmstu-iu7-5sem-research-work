@@ -1,51 +1,67 @@
-\newcommand{\fixunderline}[3]
-{
-	$\underset{\text{#3}}{\text{\uline{\stackengine{0pt}{\hspace{#2}}{\text{#1}}{O}{c}{F}{F}{L}}}}$
-}
-
 \begin{titlepage}
-	\newgeometry{pdftex, left=2cm, right=2cm, top=2.5cm, bottom=2.5cm}
-	\fontsize{12pt}{12pt}\selectfont
-	\noindent \begin{minipage}{0.15\textwidth}
-		\includegraphics[width=\linewidth]{img/b_logo.jpg}
+	\noindent\begin{minipage}{0.05\textwidth}
+		\includegraphics[scale=0.3]{img/bmstu.png}
 	\end{minipage}
-	\noindent\begin{minipage}{0.9\textwidth}\centering
-		\textbf{Министерство науки и высшего образования Российской Федерации}\\
-		\textbf{Федеральное государственное бюджетное образовательное учреждение высшего образования}\\
-		\textbf{«Московский государственный технический университет имени Н. Э.~Баумана}\\
-		\textbf{(национальный исследовательский университет)»}\\
-		\textbf{(МГТУ им. Н. Э.~Баумана)}
+	\hfill
+	\begin{minipage}{0.85\textwidth}\raggedleft
+		\begin{center}
+			\fontsize{12pt}{0.3\baselineskip}\selectfont \textbf{Министерство науки и высшего образования Российской Федерации \\ Федеральное государственное бюджетное образовательное учреждение \\ высшего образования \\ <<Московский государственный технический университет \\ имени Н.Э. Баумана \\ (национальный исследовательский университет)>> \\ (МГТУ им. Н.Э. Баумана)}
+		\end{center}
 	\end{minipage}
 	
-	\noindent\rule{18cm}{3pt}
-	\newline\newline
-	\noindent ФАКУЛЬТЕТ $\underline{\text{«Информатика и системы управления»~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~}}$ \newline\newline
-	\noindent КАФЕДРА $\underline{\text{«Программное обеспечение ЭВМ и информационные технологии»~~~~~~~~~~~~~~~~~~~~~~~}}$\newline\newline\newline\newline\newline\newline\newline
+	\begin{center}
+		\fontsize{12pt}{0.1\baselineskip}\selectfont
+		\noindent\makebox[\linewidth]{\rule{\textwidth}{4pt}} \makebox[\linewidth]{\rule{\textwidth}{1pt}}
+	\end{center}
 	
+	\begin{flushleft}
+		\fontsize{12pt}{0.8\baselineskip}\selectfont 
+		
+		ФАКУЛЬТЕТ \uline{ИУ <<Информатика и системы управления>> \hfill}
+		
+		КАФЕДРА \uline{\mbox{\hspace{4mm}} ИУ-7 <<Программное обеспечение ЭВМ и информационные технологии>> \hfill}
+	\end{flushleft}
+	
+	\vfill
 	
 	\begin{center}
-		\textbf{ОТЧЕТ} \\
-		по Лабораторной работе №3\\
-		по курсу <<Анализы Алгоритмов>> \\
-		на тему: <<Трудоемкость сортировок>>
+		\fontsize{20pt}{\baselineskip}\selectfont
+		
+		\textbf{РАСЧЕТНО-ПОЯСНИТЕЛЬНАЯ ЗАПИСКА}
+		
+		\textbf{\textit{К НАУЧНО-ИССЛЕДОВАТЕЛЬСКОЙ РАБОТЕ}}
+		
+		\textbf{\textit{НА ТЕМУ:}}
 	\end{center}
-
-	\vfill
-	\vfill
-	\vfill
-	Студент $\underset{\text{(Группа)}}{\underline{\text{ИУ7-56Б}}}$
-	\hfill
-	$\underset{\text{(Фамилия~И.~О.)}}{\underline{\text{Мансуров~В.~М.}}}$
-	
-	Преподаватели 
-	\hfill
-	$\underset{\text{(Фамилия~И.~О.)}}{\underline{\text{Волкова~Л.~Л., Строганов~Ю.~В.}}}$
 	
 	\begin{center}
-		\vfill
-		Москва~---~\the\year
-		~г.
+		\fontsize{18pt}{0.6cm}\selectfont 
+		
+		<<Классификация сетевых подсистем мониторинга ядра ОС Linux>>
+		
 	\end{center}
-	\restoregeometry
+	
+	\vfill
+	
+	\begin{table}[h!]
+		\fontsize{12pt}{0.7\baselineskip}\selectfont
+		\centering
+		\begin{signstabular}[0.7]{p{7.25cm} >{\centering\arraybackslash}p{4cm} >{\centering\arraybackslash}p{4cm}}
+			Студент группы \textbf{ИУ7-56Б} & \uline{\mbox{\hspace*{4cm}}} & \uline{\hfill \textbf{В. М. Мансуров} \hfill} \\
+			& \scriptsize (Подпись, дата) & \scriptsize (И.О. Фамилия)
+		\end{signstabular}
+		
+		\vspace{\baselineskip}
+		
+		\begin{signstabular}[0.7]{p{7.25cm} >{\centering\arraybackslash}p{4cm} >{\centering\arraybackslash}p{4cm}}
+			Руководитель & \uline{\mbox{\hspace*{4cm}}} & \uline{\hfill \textbf{А. А. Оленев} \hfill} \\
+			& \scriptsize (Подпись, дата) & \scriptsize (И.О. Фамилия)
+		\end{signstabular}
+	\end{table}
+	
+	\vfill
+	
+	\begin{center}
+		\normalsize \textit{2022 г.}
+	\end{center}
 \end{titlepage}
-
