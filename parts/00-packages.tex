@@ -1,24 +1,32 @@
+\usepackage[14pt]{extsizes} % Для добавления в параметры класса документа 14pt
+
 \usepackage{cmap} % Улучшенный поиск русских слов в полученном pdf-файле
+\usepackage[english,russian]{babel} % Языки: английский, русский
+
 \usepackage[T2A]{fontenc} % Поддержка русских букв
 \usepackage[utf8]{inputenc} % Кодировка utf8
-\usepackage[english,russian]{babel} % Языки: английский, русский
-\usepackage{enumitem}
-\usepackage{threeparttable}
+%\usefont{T2A}{ftm}{m}{sl} % Основная строчка, которая позволяет получить шрифт Times New Roman
 
-\usepackage[14pt]{extsizes}
-\usepackage{geometry}
-\geometry{left=30mm}
-\geometry{right=10mm}
-\geometry{top=20mm}
-\geometry{bottom=20mm}
 
+\usepackage[left=30mm,right=10mm,top=20mm,bottom=20mm]{geometry}
+
+\usepackage[para,online,flushleft]{threeparttable}
 \usepackage{caption}
+% Работа с изображениями и таблицами; переопределение названий по ГОСТу
+\captionsetup[table]{singlelinecheck=false, labelsep=endash}
 \captionsetup[table]{justification=raggedright,singlelinecheck=off}
-\captionsetup[lstlisting]{justification=raggedright,singlelinecheck=off}
 \captionsetup{labelsep=endash}
 \captionsetup[figure]{name={Рисунок}}
+\captionsetup[lstlisting]{justification=raggedright,singlelinecheck=off} % Работа с листингом
+\usepackage[justification=centering]{caption} % Настройка подписей float объектов
 
+\usepackage{graphicx}
+\usepackage{slashbox}
+\usepackage{diagbox} % Диагональное разделение первой ячейки в таблицах
+
+\usepackage{amssymb}
 \usepackage{amsmath}
+\usepackage{float}
 \usepackage{csvsimple}
 \usepackage{enumitem} 
 \setenumerate[0]{label=\arabic*)} % Изменение вида нумерации списков
@@ -27,17 +35,32 @@
 % Переопределение стандартных \section, \subsection, \subsubsection по ГОСТу;
 % Переопределение их отступов до и после для 1.5 интервала во всем документе
 \usepackage{titlesec}
-\titleformat{\section}
-{\normalsize\bfseries}
-{\thesection}
-{1em}{}
-\titlespacing*{\chapter}{0pt}{-30pt}{8pt}
-\titlespacing*{\section}{\parindent}{*4}{*4}
-\titlespacing*{\subsection}{\parindent}{*4}{*4}
 
-\usepackage{titlesec}
-\titleformat{\chapter}{\LARGE\bfseries}{\thechapter}{16pt}{\LARGE\bfseries}
-\titleformat{\section}{\Large\bfseries}{\thesection}{16pt}{\Large\bfseries}
+\titlespacing{\section}{0mm}{0mm}{8mm}
+
+\titleformat{\subsection}[hang]
+{\bfseries\normalsize}{\thesubsection}{1em}{}
+\titlespacing\subsection{\parindent}{12mm}{12mm}
+
+\titleformat{\subsubsection}[hang]
+{\bfseries\normalsize}{\thesubsubsection}{1em}{}
+\titlespacing\subsubsection{\parindent}{12mm}{12mm}
+
+\titleformat{name=\section}[block]
+{\normalfont\normalsize\bfseries\hspace{\parindent}}
+{\thesection}
+{1em}
+{}
+\titleformat{name=\section,numberless}[block]
+{\normalfont\normalsize\bfseries\centering}
+{}
+{0pt}
+{}
+
+\newcommand{\specsection}[1]{
+	\section*{\centering#1}
+	\addcontentsline{toc}{section}{#1}
+}
 
 \usepackage{setspace}
 \onehalfspacing % Полуторный интервал
@@ -45,15 +68,22 @@
 \frenchspacing
 \usepackage{indentfirst} % Красная строка после заголовка
 \setlength\parindent{1.25cm}
+\usepackage{multirow}
+\renewcommand{\baselinestretch}{1.5}
+\def\arraystretch{1.5}%  1 is the default, change whatever you need
+\setlist{nolistsep} % Отсутствие отступов между элементами \enumerate и \itemize
 
-\usepackage{listings}
+% Цвета для гиперссылок и листингов
 \usepackage{xcolor}
+\usepackage{color} 
+
 
 \usepackage{ulem} % Нормальное нижнее подчеркивание
 \usepackage{hhline} % Двойная горизонтальная линия в таблицах
 \usepackage[figure,table]{totalcount} % Подсчет изображений, таблиц
 \usepackage{rotating} % Поворот изображения вместе с названием
 \usepackage{lastpage} % Для подсчета числа страниц
+
 % Дополнительное окружения для подписей
 \usepackage{array}
 \newenvironment{signstabular}[1][1]{
@@ -63,18 +93,35 @@
 	\endtabular
 }
 
+% Гиперссылки \toc с кликабельностью
+\usepackage[unicode,pdftex]{hyperref} % Ссылки в pdf
+\hypersetup{hidelinks}
+\hypersetup{citecolor=black}
+
+\usepackage{pdfpages}
+\usepackage{pgfplots}
+\usetikzlibrary{datavisualization}
+\usetikzlibrary{datavisualization.formats.functions}
+
+\newcommand{\code}[1]{\texttt{#1}}
+
+% используется в качетсве обозначения в таблицах сравнения
+\usepackage{pifont}
+\newcommand{\cmark}{\textcolor{green}{\ding{51}}}%
+\newcommand{\xmark}{\textcolor{red}{\ding{55}}}%
+
+% Список литературы
 \makeatletter 
-\def\@biblabel#1{#1. } % Изменение нумерации списка использованных источников
-\makeatother\makeatletter 
-\def\@biblabel#1{#1. } % Изменение нумерации списка использованных источников
+\def\@biblabel#1{#1 } % Изменение нумерации списка использованных источников
 \makeatother
 
+\usepackage{listings}
 % Для листинга кода:
 \lstset{%
 	language=c++,   					% выбор языка для подсветки	
 	basicstyle=\small\sffamily,			% размер и начертание шрифта для подсветки кода
 	numbers=left,						% где поставить нумерацию строк (слева\справа)
-	%numberstyle=,					% размер шрифта для номеров строк
+	%numberstyle=,					    % размер шрифта для номеров строк
 	stepnumber=1,						% размер шага между двумя номерами строк
 	numbersep=5pt,						% как далеко отстоят номера строк от подсвечиваемого кода
 	frame=single,						% рисовать рамку вокруг кода
@@ -86,6 +133,7 @@
 	backgroundcolor=\color{white}
 }
 
+% Утсановление комментарии через кириллицу в листинге
 \lstset{
 	literate=
 	{а}{{\selectfont\char224}}1
@@ -155,20 +203,3 @@
 	{Ю}{{\selectfont\char222}}1
 	{Я}{{\selectfont\char223}}1
 }
-
-\usepackage{pgfplots}
-\usetikzlibrary{datavisualization}
-\usetikzlibrary{datavisualization.formats.functions}
-
-\usepackage{graphicx}
-
-\usepackage[justification=centering]{caption} % Настройка подписей float объектов
-
-\usepackage[unicode,pdftex]{hyperref} % Ссылки в pdf
-\hypersetup{hidelinks}
-
-\newcommand{\code}[1]{\texttt{#1}}
-
-\usepackage{pifont}
-\newcommand{\cmark}{\textcolor{green}{\ding{51}}}%
-\newcommand{\xmark}{\textcolor{red}{\ding{55}}}%
